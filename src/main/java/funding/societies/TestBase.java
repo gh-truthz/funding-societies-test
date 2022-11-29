@@ -1,22 +1,32 @@
 package funding.societies;
 
+import funding.societies.api.content.Resource;
 import funding.societies.api.content.User;
 import io.restassured.response.Response;
 import org.assertj.core.api.Assertions;
 
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class TestBase {
+    public static int response_thread_hold_time_in_ms = 1000;
 
     protected void verifyUser(User actualUser, User expectedData) {
+        Assertions.assertThat(actualUser.getId()).isEqualTo(expectedData.getId());
         Assertions.assertThat(actualUser.getEmail()).isEqualTo(expectedData.getEmail());
         Assertions.assertThat(actualUser.getAvatar()).isEqualTo(expectedData.getAvatar());
         Assertions.assertThat(actualUser.getFirst_name()).isEqualTo(expectedData.getFirst_name());
         Assertions.assertThat(actualUser.getLast_name()).isEqualTo(expectedData.getLast_name());
+    }
+
+    protected void verifyResource(Resource actualUser, Resource expectedData) {
+        Assertions.assertThat(actualUser.getId()).isEqualTo(expectedData.getId());
+        Assertions.assertThat(actualUser.getName()).isEqualTo(expectedData.getName());
+        Assertions.assertThat(actualUser.getColor()).isEqualTo(expectedData.getColor());
+        Assertions.assertThat(actualUser.getYear()).isEqualTo(expectedData.getYear());
+        Assertions.assertThat(actualUser.getPantone_value()).isEqualTo(expectedData.getPantone_value());
     }
     protected void verifyTheSupportPart(Response response) {
         String url = response.getBody().jsonPath().getString("support.url");
@@ -93,5 +103,77 @@ public class TestBase {
                 .collect(Collectors.toList());
     }
 
+    protected Resource getResourceById(int id) {
+        switch (id) {
+            case 1: return new Resource().setId(1)
+                    .setName("cerulean")
+                    .setColor("#98B2D1")
+                    .setYear(2000)
+                    .setPantone_value("15-4020");
+            case 2: return new Resource().setId(2)
+                    .setName("fuchsia rose")
+                    .setColor("#C74375")
+                    .setYear(2001)
+                    .setPantone_value("17-2031");
+            case 3: return new Resource().setId(3)
+                    .setName("true red")
+                    .setColor("#BF1932")
+                    .setYear(2002)
+                    .setPantone_value("19-1664");
+            case 4: return new Resource().setId(4)
+                    .setName("aqua sky")
+                    .setColor("#7BC4C4")
+                    .setYear(2003)
+                    .setPantone_value("14-4811");
+            case 5: return new Resource().setId(5)
+                    .setName("tigerlily")
+                    .setColor("#E2583E")
+                    .setYear(2004)
+                    .setPantone_value("17-1456");
+            case 6: return new Resource().setId(6)
+                    .setName("blue turquoise")
+                    .setColor("#53B0AE")
+                    .setYear(2005)
+                    .setPantone_value("15-5217");
+            case 7: return new Resource().setId(7)
+                    .setName("sand dollar")
+                    .setColor("#DECDBE")
+                    .setYear(2006)
+                    .setPantone_value("13-1106");
+            case 8: return new Resource().setId(8)
+                    .setName("chili pepper")
+                    .setColor("#9B1B30")
+                    .setYear(2007)
+                    .setPantone_value("19-1557");
+            case 9: return new Resource().setId(9)
+                    .setName("blue iris")
+                    .setColor("#5A5B9F")
+                    .setYear(2008)
+                    .setPantone_value("18-3943");
+            case 10: return new Resource().setId(10)
+                    .setName("mimosa")
+                    .setColor("#F0C05A")
+                    .setYear(2009)
+                    .setPantone_value("14-0848");
+            case 11: return new Resource().setId(11)
+                    .setName("turquoise")
+                    .setColor("#45B5AA")
+                    .setYear(2010)
+                    .setPantone_value("15-5519");
+            case 12: return new Resource().setId(12)
+                    .setName("honeysuckle")
+                    .setColor("#D94F70")
+                    .setYear(2011)
+                    .setPantone_value("18-2120");
+            default: return null;
+        }
+    }
 
+    protected List<Resource> getResourceList(int fromId, int toId) {
+        return IntStream.rangeClosed(fromId, toId)
+                .boxed()
+                .map(id -> getResourceById(id))
+                .filter(item -> item != null)
+                .collect(Collectors.toList());
+    }
 }
