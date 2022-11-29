@@ -21,7 +21,6 @@ The project for interview testing of Funding Societies Company
 | Update     | 4. Update field non-exist record |This test failed because The update function should inform that there is no corresponding data|
 | Delete     | 1. Delete new record | -     |
 | Delete     | 2. Delete record for used ID | -     |
-
 #### I.I.II Resource APIs
 | API        | Description                                   | Notes |
 |------------|-----------------------------------------------|-------|
@@ -32,7 +31,6 @@ The project for interview testing of Funding Societies Company
 | Get List   | 2. Get List with valid range page but no data | -     |
 | Get List   | 3. Get List with invalid range page           |This test is failed because the total_page should not be negatived|
 | Get List   | 4. Get List with full data                    | -     |
-
 #### I.I.III Register API
 | API        | Description                                   | Notes |
 |------------|-----------------------------------------------|-------|
@@ -45,10 +43,16 @@ The project for interview testing of Funding Societies Company
 | Login    | 1. Success Login                   | -     |
 | Login | 2. Failed Login                   | -     |
 | Login | 3. Non-exists Email Login                    | -     |
+#### I.I.IV Web Control
+| API   | Description   | Notes                                                                                  |
+|-------|---------------|----------------------------------------------------------------------------------------|
+| Web   | 1. Basic Test | This test is only use the basic web driver of Selenium to control the web interactions |
+**Notes**: The data getting from chart should be needed another approach like getting from chart input data (file or API).
+
 ### I.II Test Run Steps
 #### I.II.I Pre-steps
-Require to install Java SDK 11
-Require to install Maven 3.8.1
+* Require to install Java SDK 11
+* Require to install Maven 3.8.1
 #### I.II.I Run-steps
 Run maven command with Defined Test Suite
 `mvn test -Dsuite=APITestSuite.xml -f pom.xml`
