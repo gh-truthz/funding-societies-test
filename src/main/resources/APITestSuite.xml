@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="APIsTesting" parallel="methods" thread-count="4" verbose="2">
+	<test name="APIsTesting">
+		<classes>
+			<class name="funding.societies.test.apis.UserApiTests"/>
+			<class name="funding.societies.test.apis.ResourceApiTests"/>
+			<class name="funding.societies.test.apis.LoginApiTests"/>
+			<class name="funding.societies.test.apis.RegisterApiTests"/>
+		</classes>
+	</test>
+</suite>

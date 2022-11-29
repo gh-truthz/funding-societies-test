@@ -25,7 +25,7 @@ public class UserApiTests extends TestBase {
 
         testCases.add(new Object[]{"1. Get Valid User with ID", exists_id_1, getUserById(exists_id_1), StatusCode.OK});
         testCases.add(new Object[]{"2. Get Valid User with ID", exists_id_2, getUserById(exists_id_2), StatusCode.OK});
-        testCases.add(new Object[]{"4. Get Invalid User with ID", non_exists_id, getUserById(non_exists_id), StatusCode.RESOURCE_NOT_FOUND});
+        testCases.add(new Object[]{"3. Get Invalid User with ID", non_exists_id, getUserById(non_exists_id), StatusCode.RESOURCE_NOT_FOUND});
 
         return testCases.iterator();
     }
