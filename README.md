@@ -47,8 +47,9 @@ The project for interview testing of Funding Societies Company
 | API   | Description   | Notes                                                                                  |
 |-------|---------------|----------------------------------------------------------------------------------------|
 | Web   | 1. Basic Test | This test is only use the basic web driver of Selenium to control the web interactions |
-**Notes**: The data getting from chart should be needed another approach like getting from chart input data (file or API).
-
+**Notes**: 
+* The data getting from chart should be needed another approach like getting from chart input data (file or API).
+* The current implementation is only configure for the Google Chrome Browser. We can update to support other browser with the corresponding WebDriver
 ### I.II Test Run Steps
 #### I.II.I Pre-steps
 * Require to install Java SDK 11
