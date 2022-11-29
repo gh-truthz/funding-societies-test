@@ -12,12 +12,6 @@ public class UserApiClient extends ApiClientBase {
     RequestSpecification getURL() {
         return getBaseRequestSpecification("https://reqres.in/api", "/users");
     }
-
-    @Override
-    RequestSpecification getURLWithPathParameters(String path) {
-        return getBaseRequestSpecification("https://reqres.in/api", "/users/" + path);
-
-    }
     //end region
     //------------------------------------------------------------------------------------------------------------------
     // GET LIST USERS

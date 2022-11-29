@@ -6,7 +6,6 @@ import io.restassured.specification.RequestSpecification;
 
 public abstract class ApiClientBase {
     abstract RequestSpecification getURL();
-    abstract RequestSpecification getURLWithPathParameters(String path);
 
     protected RequestSpecification getBaseRequestSpecification(String baseUrl, String basePath) {
         assert baseUrl != null : "The baseUrl is required for RequestSpecification";

@@ -1,8 +1,9 @@
-package funding.societies;
+package funding.societies.test.apis;
 
+import funding.societies.TestBase;
 import funding.societies.api.content.User;
 import funding.societies.api.enums.StatusCode;
-import funding.societies.api.enums.TestingAPIs;
+import funding.societies.api.TestingAPIs;
 import io.restassured.response.Response;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
@@ -10,12 +11,12 @@ import org.testng.annotations.Test;
 
 import java.util.*;
 
-public class FirstTests extends TestBase {
+public class UserApiTests extends TestBase {
     public static int exists_id_1 = 1;
     public static int exists_id_2 = 2;
     public static int non_exists_id = 23;
     public static int number_of_data_in_db = 12;
-    public static int response_thread_hold_time_in_ms = 1000;
+
 
 
     @DataProvider(name = "users")
@@ -170,7 +171,7 @@ public class FirstTests extends TestBase {
                 .then().statusCode(StatusCode.OK.value())
                 .extract().response();
 
-        verifyResponseTime(response_thread_hold_time_in_ms, response);
+        verifyResponseTime(4 * 1000, response);
 
     }
 }
